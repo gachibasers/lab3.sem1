@@ -6,7 +6,7 @@ export default function Column({ title, tasks }) {
       style={{
         flex: 1,
         margin: "0 8px",
-        backgroundColor: "#f5f5f5",
+        backgroundColor: "#000000ff",
         borderRadius: "12px",
         padding: "8px",
         minHeight: "200px",

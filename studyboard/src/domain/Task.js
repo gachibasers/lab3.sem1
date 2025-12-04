@@ -4,8 +4,8 @@ export class Task {
     title,
     description = "",
     courseId = null,
-    status = "todo", // "todo" | "in-progress" | "done"
-    priority = "medium", // "low" | "medium" | "high"
+    status = "todo",
+    priority = "medium",
     deadline = null,
     createdAt = new Date().toISOString(),
   }) {
@@ -27,11 +27,7 @@ export class Task {
     this.status = "done";
   }
 
-  updateDetails({ title, description, priority, deadline, courseId }) {
-    if (title !== undefined) this.title = title;
-    if (description !== undefined) this.description = description;
-    if (priority !== undefined) this.priority = priority;
-    if (deadline !== undefined) this.deadline = deadline;
-    if (courseId !== undefined) this.courseId = courseId;
+  updateDetails(changes) {
+    Object.assign(this, changes);
   }
 }

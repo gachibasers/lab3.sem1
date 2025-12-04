@@ -1,7 +1,15 @@
 import { create } from "zustand";
 import { Board } from "../domain/Board.js";
+import { StorageService } from "../services/StorageService.js";
+import { Logger } from "../services/Logger.js";
 
 function createInitialBoard() {
+  const stored = StorageService.loadBoard();
+  if (stored) {
+    Logger.info("Loaded board from storage");
+    return stored;
+  }
+
   const initialCourses = [
     { id: "course-oop", name: "OOP", color: "#1976d2" },
     { id: "course-math", name: "Math analysis", color: "#d32f2f" },
@@ -32,6 +40,7 @@ function createInitialBoard() {
     },
   ];
 
+  Logger.info("Using initial hardcoded board");
   return new Board({ tasks: initialTasks, courses: initialCourses });
 }
 
@@ -44,7 +53,11 @@ export const useBoardStore = create((set, get) => ({
       tasks: currentBoard.tasks,
       courses: currentBoard.courses,
     });
+
     newBoard.addTask(taskData);
+    StorageService.saveBoard(newBoard);
+    Logger.info("Task added", taskData);
+
     set({ board: newBoard });
   },
 
@@ -54,7 +67,11 @@ export const useBoardStore = create((set, get) => ({
       tasks: currentBoard.tasks,
       courses: currentBoard.courses,
     });
+
     newBoard.moveTask(taskId, newStatus);
+    StorageService.saveBoard(newBoard);
+    Logger.info("Task moved", { taskId, newStatus });
+
     set({ board: newBoard });
   },
 }));
