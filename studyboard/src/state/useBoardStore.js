@@ -11,13 +11,13 @@ function createInitialBoard() {
   }
 
   const initialCourses = [
-  { id: "course-oop", name: "OOP", color: "#1976d2" },
-  { id: "course-math", name: "Math analysis", color: "#d32f2f" },
-  { id: "course-algo", name: "Algorithms and Data Structures", color: "#f59f00" },
-  { id: "course-discrete", name: "Discrete Math", color: "#9c36b5" },
-  { id: "course-eng", name: "English", color: "#20c997" },
-  { id: "course-other", name: "Other", color: "#868e96" }
-];
+    { id: "course-oop", name: "OOP", color: "#1976d2" },
+    { id: "course-math", name: "Math analysis", color: "#d32f2f" },
+    { id: "course-algo", name: "Algorithms and Data Structures", color: "#f59f00" },
+    { id: "course-discrete", name: "Discrete Math", color: "#9c36b5" },
+    { id: "course-eng", name: "English", color: "#20c997" },
+    { id: "course-other", name: "Other", color: "#868e96" }
+  ];
 
   const initialTasks = [
     {
@@ -51,6 +51,10 @@ function createInitialBoard() {
 export const useBoardStore = create((set, get) => ({
   board: createInitialBoard(),
 
+  getCourseById(courseId) {
+    return get().board.courses.find((c) => c.id === courseId) || null;
+  },
+
   addTask(taskData) {
     const currentBoard = get().board;
     const newBoard = new Board({
@@ -75,6 +79,20 @@ export const useBoardStore = create((set, get) => ({
     newBoard.moveTask(taskId, newStatus);
     StorageService.saveBoard(newBoard);
     Logger.info("Task moved", { taskId, newStatus });
+
+    set({ board: newBoard });
+  },
+
+  removeTask(taskId) {
+    const currentBoard = get().board;
+    const newBoard = new Board({
+      tasks: currentBoard.tasks,
+      courses: currentBoard.courses,
+    });
+
+    newBoard.removeTask(taskId);
+    StorageService.saveBoard(newBoard);
+    Logger.info("Task removed", { taskId });
 
     set({ board: newBoard });
   },
