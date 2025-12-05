@@ -1,0 +1,32 @@
+{
+  "nav": {
+    "board": "Дошка",
+    "stats": "Статистика",
+    "settings": "Налаштування"
+  },
+  "board": {
+    "title": "StudyBoard – канбан-дошка",
+    "addTaskPlaceholder": "Назва задачі",
+    "addDescriptionPlaceholder": "Опис (необов'язково)",
+    "addTaskButton": "Додати задачу",
+    "columnTodo": "До виконання",
+    "columnInProgress": "В процесі",
+    "columnDone": "Виконано",
+    "noTasks": "Немає задач"
+  },
+  "stats": {
+    "title": "Статистика",
+    "tasksByStatus": "Задачі за статусами",
+    "tasksByCourse": "Задачі за курсами",
+    "labelTodo": "До виконання",
+    "labelInProgress": "В процесі",
+    "labelDone": "Виконано",
+    "labelNumberOfTasks": "Кількість задач"
+  },
+  "settings": {
+    "title": "Налаштування",
+    "language": "Мова інтерфейсу",
+    "languageEn": "Англійська",
+    "languageUk": "Українська"
+  }
+}

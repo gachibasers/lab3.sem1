@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function generateId() {
   if (window.crypto?.randomUUID) {
@@ -8,6 +9,8 @@ function generateId() {
 }
 
 export default function AddTaskForm({ courses, onAdd }) {
+  const { t } = useTranslation();
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [courseId, setCourseId] = useState(courses[0]?.id ?? "");
@@ -43,7 +46,7 @@ export default function AddTaskForm({ courses, onAdd }) {
     >
       <input
         type="text"
-        placeholder="Task title"
+        placeholder={t("board.addTaskPlaceholder")}
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         style={{ padding: "6px 8px", minWidth: "220px" }}
@@ -51,7 +54,7 @@ export default function AddTaskForm({ courses, onAdd }) {
 
       <input
         type="text"
-        placeholder="Description (optional)"
+        placeholder={t("board.addDescriptionPlaceholder")}
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         style={{ padding: "6px 8px", minWidth: "260px" }}
@@ -89,7 +92,7 @@ export default function AddTaskForm({ courses, onAdd }) {
           cursor: "pointer",
         }}
       >
-        Add task
+        {t("board.addTaskButton")}
       </button>
     </form>
   );

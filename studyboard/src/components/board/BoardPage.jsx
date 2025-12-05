@@ -1,9 +1,11 @@
 import { DragDropContext } from "@hello-pangea/dnd";
+import { useTranslation } from "react-i18next";
 import { useBoardStore } from "../../state/useBoardStore.js";
 import Column from "./Column.jsx";
 import AddTaskForm from "./AddTaskForm.jsx";
 
 export default function BoardPage() {
+  const { t } = useTranslation();
   const board = useBoardStore((state) => state.board);
   const addTask = useBoardStore((state) => state.addTask);
   const moveTask = useBoardStore((state) => state.moveTask);
@@ -14,9 +16,9 @@ export default function BoardPage() {
 
   const handleDragEnd = (result) => {
     const { destination, source, draggableId } = result;
+
     if (!destination) return;
 
-    // Якщо впало в ту саму колонку на те саме місце — нічого не робимо
     if (
       destination.droppableId === source.droppableId &&
       destination.index === source.index
@@ -24,21 +26,24 @@ export default function BoardPage() {
       return;
     }
 
-    // droppableId = статус колонки ("todo" / "in-progress" / "done")
     moveTask(draggableId, destination.droppableId);
   };
 
   return (
     <div>
-      <h2 style={{ marginBottom: "16px" }}>StudyBoard – Kanban</h2>
+      <h2 style={{ marginBottom: "16px" }}>{t("board.title")}</h2>
 
       <AddTaskForm courses={board.courses} onAdd={addTask} />
 
       <DragDropContext onDragEnd={handleDragEnd}>
         <div style={{ display: "flex", gap: "8px" }}>
-          <Column title="To Do" status="todo" tasks={todoTasks} />
-          <Column title="In Progress" status="in-progress" tasks={inProgressTasks} />
-          <Column title="Done" status="done" tasks={doneTasks} />
+          <Column title={t("board.columnTodo")} status="todo" tasks={todoTasks} />
+          <Column
+            title={t("board.columnInProgress")}
+            status="in-progress"
+            tasks={inProgressTasks}
+          />
+          <Column title={t("board.columnDone")} status="done" tasks={doneTasks} />
         </div>
       </DragDropContext>
     </div>

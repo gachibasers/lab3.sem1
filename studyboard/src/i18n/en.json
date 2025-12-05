@@ -1,0 +1,32 @@
+{
+  "nav": {
+    "board": "Board",
+    "stats": "Statistics",
+    "settings": "Settings"
+  },
+  "board": {
+    "title": "StudyBoard – Kanban",
+    "addTaskPlaceholder": "Task title",
+    "addDescriptionPlaceholder": "Description (optional)",
+    "addTaskButton": "Add task",
+    "columnTodo": "To Do",
+    "columnInProgress": "In Progress",
+    "columnDone": "Done",
+    "noTasks": "No tasks"
+  },
+  "stats": {
+    "title": "Statistics",
+    "tasksByStatus": "Tasks by Status",
+    "tasksByCourse": "Tasks by Course",
+    "labelTodo": "To Do",
+    "labelInProgress": "In Progress",
+    "labelDone": "Done",
+    "labelNumberOfTasks": "Number of tasks"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "languageEn": "English",
+    "languageUk": "Ukrainian"
+  }
+}

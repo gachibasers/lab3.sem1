@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Bar, Pie } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -9,16 +10,10 @@ import {
   Legend,
 } from "chart.js";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  ArcElement,
-  Tooltip,
-  Legend
-);
+ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Legend);
 
 export default function Charts({ board }) {
+  const { t } = useTranslation();
   const tasks = board.tasks;
 
   const todo = board.getTasksByStatus("todo").length;
@@ -32,15 +27,18 @@ export default function Charts({ board }) {
 
   return (
     <div style={{ display: "flex", gap: "32px", flexWrap: "wrap" }}>
-      {/* PIE CHART */}
       <div style={{ width: "300px" }}>
-        <h3>Tasks by Status</h3>
+        <h3>{t("stats.tasksByStatus")}</h3>
         <Pie
           data={{
-            labels: ["To Do", "In Progress", "Done"],
+            labels: [
+              t("stats.labelTodo"),
+              t("stats.labelInProgress"),
+              t("stats.labelDone"),
+            ],
             datasets: [
               {
-                label: "Tasks",
+                label: t("stats.labelNumberOfTasks"),
                 data: [todo, inProgress, done],
                 backgroundColor: ["#ff6384", "#36a2eb", "#4caf50"],
               },
@@ -49,15 +47,14 @@ export default function Charts({ board }) {
         />
       </div>
 
-      {/* BAR CHART */}
       <div style={{ width: "400px" }}>
-        <h3>Tasks by Course</h3>
+        <h3>{t("stats.tasksByCourse")}</h3>
         <Bar
           data={{
             labels: tasksByCourse.map((x) => x.course),
             datasets: [
               {
-                label: "Number of tasks",
+                label: t("stats.labelNumberOfTasks"),
                 data: tasksByCourse.map((x) => x.count),
                 backgroundColor: "#36a2eb",
               },
