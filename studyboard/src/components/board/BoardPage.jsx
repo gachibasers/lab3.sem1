@@ -31,12 +31,12 @@ export default function BoardPage() {
 
   return (
     <div>
-      <h2 style={{ marginBottom: "16px" }}>{t("board.title")}</h2>
+      <h2 className="page-title">{t("board.title")}</h2>
 
       <AddTaskForm courses={board.courses} onAdd={addTask} />
 
       <DragDropContext onDragEnd={handleDragEnd}>
-        <div style={{ display: "flex", gap: "8px" }}>
+        <div className="board-columns">
           <Column title={t("board.columnTodo")} status="todo" tasks={todoTasks} />
           <Column
             title={t("board.columnInProgress")}

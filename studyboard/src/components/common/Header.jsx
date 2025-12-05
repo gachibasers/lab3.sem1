@@ -1,37 +1,27 @@
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const linkStyle = (active) => ({
-  marginRight: "16px",
-  textDecoration: "none",
-  fontWeight: active ? "bold" : "normal",
-  color: active ? "#1976d2" : "#ccc"
-});
+const linkClass = (active) =>
+  "app-nav__link" + (active ? " app-nav__link--active" : "");
 
 export default function Header() {
   const location = useLocation();
   const { t } = useTranslation();
 
   return (
-    <header
-      style={{
-        padding: "12px 16px",
-        borderBottom: "1px solid #333",
-        marginBottom: "16px",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center"
-      }}
-    >
-      <div style={{ fontWeight: "bold" }}>StudyBoard</div>
+    <header className="app-header">
+      <div className="app-header__title">StudyBoard</div>
       <nav>
-        <Link to="/" style={linkStyle(location.pathname === "/")}>
+        <Link to="/" className={linkClass(location.pathname === "/")}>
           {t("nav.board")}
         </Link>
-        <Link to="/stats" style={linkStyle(location.pathname === "/stats")}>
+        <Link to="/stats" className={linkClass(location.pathname === "/stats")}>
           {t("nav.stats")}
         </Link>
-        <Link to="/settings" style={linkStyle(location.pathname === "/settings")}>
+        <Link
+          to="/settings"
+          className={linkClass(location.pathname === "/settings")}
+        >
           {t("nav.settings")}
         </Link>
       </nav>

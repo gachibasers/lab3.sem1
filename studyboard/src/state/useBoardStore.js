@@ -11,9 +11,13 @@ function createInitialBoard() {
   }
 
   const initialCourses = [
-    { id: "course-oop", name: "OOP", color: "#1976d2" },
-    { id: "course-math", name: "Math analysis", color: "#d32f2f" },
-  ];
+  { id: "course-oop", name: "OOP", color: "#1976d2" },
+  { id: "course-math", name: "Math analysis", color: "#d32f2f" },
+  { id: "course-algo", name: "Algorithms and Data Structures", color: "#f59f00" },
+  { id: "course-discrete", name: "Discrete Math", color: "#9c36b5" },
+  { id: "course-eng", name: "English", color: "#20c997" },
+  { id: "course-other", name: "Other", color: "#868e96" }
+];
 
   const initialTasks = [
     {

@@ -2,14 +2,11 @@ import Header from "./Header.jsx";
 
 export default function Layout({ children }) {
   return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+    <div className="app-shell">
       <Header />
-      <main style={{ flex: 1, padding: "16px" }}>
-        {children}
+      <main className="app-main">
+        <div className="page">{children}</div>
       </main>
-      <footer style={{ textAlign: "center", padding: "8px", opacity: 0.6 }}>
-        StudyBoard © {new Date().getFullYear()}
-      </footer>
     </div>
   );
 }

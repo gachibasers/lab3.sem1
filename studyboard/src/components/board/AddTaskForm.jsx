@@ -34,22 +34,12 @@ export default function AddTaskForm({ courses, onAdd }) {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        marginBottom: "16px",
-        display: "flex",
-        gap: "8px",
-        alignItems: "flex-start",
-        flexWrap: "wrap",
-      }}
-    >
+    <form className="add-task-form" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder={t("board.addTaskPlaceholder")}
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        style={{ padding: "6px 8px", minWidth: "220px" }}
       />
 
       <input
@@ -57,13 +47,11 @@ export default function AddTaskForm({ courses, onAdd }) {
         placeholder={t("board.addDescriptionPlaceholder")}
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        style={{ padding: "6px 8px", minWidth: "260px" }}
       />
 
       <select
         value={courseId}
         onChange={(e) => setCourseId(e.target.value)}
-        style={{ padding: "6px 8px" }}
       >
         {courses.map((c) => (
           <option key={c.id} value={c.id}>
@@ -76,24 +64,13 @@ export default function AddTaskForm({ courses, onAdd }) {
       <select
         value={priority}
         onChange={(e) => setPriority(e.target.value)}
-        style={{ padding: "6px 8px" }}
       >
         <option value="low">Low</option>
         <option value="medium">Medium</option>
         <option value="high">High</option>
       </select>
 
-      <button
-        type="submit"
-        style={{
-          padding: "6px 12px",
-          borderRadius: "6px",
-          border: "none",
-          cursor: "pointer",
-        }}
-      >
-        {t("board.addTaskButton")}
-      </button>
+      <button type="submit">{t("board.addTaskButton")}</button>
     </form>
   );
 }

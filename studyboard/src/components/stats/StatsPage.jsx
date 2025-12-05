@@ -8,8 +8,10 @@ export default function StatsPage() {
 
   return (
     <div>
-      <h2 style={{ marginBottom: "16px" }}>{t("stats.title")}</h2>
-      <Charts board={board} />
+      <h2 className="page-title">{t("stats.title")}</h2>
+      <div className="stats-grid">
+        <Charts board={board} />
+      </div>
     </div>
   );
 }

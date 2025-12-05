@@ -26,8 +26,8 @@ export default function Charts({ board }) {
   }));
 
   return (
-    <div style={{ display: "flex", gap: "32px", flexWrap: "wrap" }}>
-      <div style={{ width: "300px" }}>
+    <>
+      <div className="stats-card" style={{ width: "280px" }}>
         <h3>{t("stats.tasksByStatus")}</h3>
         <Pie
           data={{
@@ -47,7 +47,7 @@ export default function Charts({ board }) {
         />
       </div>
 
-      <div style={{ width: "400px" }}>
+      <div className="stats-card" style={{ width: "380px" }}>
         <h3>{t("stats.tasksByCourse")}</h3>
         <Bar
           data={{
@@ -66,6 +66,6 @@ export default function Charts({ board }) {
           }}
         />
       </div>
-    </div>
+    </>
   );
 }
